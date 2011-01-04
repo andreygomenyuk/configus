@@ -1,0 +1,8 @@
+# Подключение самоподписанного сертификата
+# генерация сертификата:
+# openssl req -new -x509 -days 9999 -nodes -out cert.pem -keyout cert.key
+
+ssl on;
+ssl_protocols SSLv3 TLSv1;
+ssl_certificate /etc/nginx/ssl/cert.pem;
+ssl_certificate_key /etc/nginx/ssl/cert.key;

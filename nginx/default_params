@@ -1,0 +1,33 @@
+autoindex off;
+charset utf-8;
+
+error_page 500 502 503 504 /500.htm;
+root /www/$project_name/www;
+
+access_log /var/log/nginx/$project_name.access.log main;
+
+location / {
+	index index.php index.html;
+	if (!-e $request_filename) {
+		rewrite ^(.*)$ /index.php?r=$1;
+	}
+}
+
+location ~ \.php {
+	include fastcgi_params;
+	access_log /var/log/nginx/$project_name.php.access.log main;
+}
+
+# Uncomment for production or expires testing
+#location ~* \.(gif|jpg|jpeg|css|png|js)$ {
+#	access_log off;
+#	expires 10d;
+#}
+
+location = /phpinfo.php {
+	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	include fastcgi_params;
+	access_log off;
+	allow 127.0.0.1;
+	deny all;
+}

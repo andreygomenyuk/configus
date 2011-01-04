@@ -1,0 +1,6 @@
+server {
+	set $project_name "test";
+	server_name test;
+
+	include default_params;
+}
