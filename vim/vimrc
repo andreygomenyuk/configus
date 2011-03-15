@@ -61,10 +61,20 @@ set hls
 set is
 set ic
 set tabstop=4
+set shiftwidth=4
 set si
 set ai
-set sw=4
 
+" Включить подсветку для табов, а так же завершающих пробелов
+set list
+set listchars=tab:>-,trail:-
+
+" При вставке сохранять отступы
+set pastetoggle=
+
+" Включить сворачивание/разворачивание кода
+set foldenable
+set foldcolumn=3
 let php_folding=1
 
 set keymap=russian-jcukenwin
