@@ -53,18 +53,26 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-syntax on
+set nocompatible " Включаем несовместимость настроек с Vi (ибо Vi нам и не понадобится).
+
+syntax enable
 colorscheme elflord
+
+" Не выгружать буфер, когда переключаемся на другой
+" Это позволяет редактировать несколько файлов в один и тот же момент без необходимости сохранения каждый раз
+" когда переключаешься между ними
 set hidden
-set showcmd
-set hls
-set is
-set ic
+
+set showcmd " Показывать незавершённые команды в статусбаре
+set hlsearch " при поиске помечать все найденные строки
+set incsearch " при поиске перескакивать на найденный текст в процессе набора строки
+set ignorecase " игнорировать прописные/строчные при поиске
 set tabstop=4
 set shiftwidth=4
-set smarttab
-set si
-set ai
+set softtabstop=4
+set expandtab " Преобразование Таба в пробелы
+set smartindent " Включаем "умные" отспупы ( например, автоотступ после {)
+set autoindent " автоотступ
 
 " Включить подсветку для табов, а так же завершающих пробелов
 set list
@@ -75,15 +83,28 @@ set pastetoggle=
 
 " Включить сворачивание/разворачивание кода
 set foldenable
-set foldcolumn=3
 let php_folding=1
-au FileType python set foldmethod=indent
 
-set keymap=russian-jcukenwin
-set iminsert=0
-set imsearch=0
-highlight lCursor guifg=NONE guibg=Cyan
+"set nowrap " не разрывать строку
+set sidescroll=5 " прокрутка вправо/влево когда строка заежает за край и вы по ней ползаете
+
+set ruler " Показывать положение курсора всё время.
+
+" Поддержка мыши
+"set mouse=a
+"set mousemodel=popup
+
+set termencoding=utf-8 " Кодировка текста по умолчанию
+
+set ch=1 " Сделать строку команд высотой в одну строку
+set mousehide " Скрывать указатель мыши, когда печатаем
+
+" Формат строки состояния
+set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%d/%m/%Y-%H:%M\")}%=\ col:%c%V\ ascii:%b\ pos:%o\ lin:%l\,%L\ %P
+set laststatus=2
+
+" Выключаем ненавистный режим замены
+imap >Ins> <Esc>i
 
 map <f2> :w\|!php %
 map <f3> :w\|!python %
-
