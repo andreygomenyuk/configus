@@ -190,6 +190,10 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+
 [user]
 	name = Andrey Gomenyuk
 	email = andrey.gomenyuk@corp.badoo.com
+
+[oh-my-zsh]
+	hide-dirty = 1
