@@ -1,0 +1,8 @@
+[general_settings]
+dir = badoo;
+ 
+[www1.d4]
+
+[wwwbilling1.d4]
+exclude = .git;
+
