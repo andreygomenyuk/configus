@@ -56,9 +56,20 @@ defaults write com.apple.dock tilesize -int 36
 defaults write com.apple.dock mineffect -string "scale"
 defaults write com.apple.dock minimize-to-application -bool true
 defaults write com.apple.dock show-process-indicators -bool true
+defaults delete com.apple.dock persistent-apps
+defaults delete com.apple.dock persistent-others
 
 # TextEdit
 defaults write com.apple.TextEdit RichText -int 0
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+# Termial
+defaults write com.apple.Terminal.plist "Default Window Settings" "Pro"
+defaults write com.apple.Terminal.plist "Startup Window Settings" "Pro"
+/usr/libexec/PlistBuddy -c "Add :'Window Settings':Pro:rowCount integer 50" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add :'Window Settings':Pro:columnCount integer 150" ~/Library/Preferences/com.apple.Terminal.plist
+
+killall Dock
+killall Finder
 
