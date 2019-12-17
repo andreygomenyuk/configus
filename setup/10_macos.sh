@@ -18,6 +18,8 @@ defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM  HH:mm:ss
 defaults write com.apple.menuextra.clock IsAnalog -bool false
 defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
 defaults write com.apple.menuextra.battery ShowPercent -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/vpn.menu"
+defaults write com.apple.networkConnect VPNShowTime -bool True
 
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
@@ -72,4 +74,5 @@ defaults write com.apple.Terminal.plist "Startup Window Settings" "Pro"
 
 killall Dock
 killall Finder
+killall SystemUIServer -HUP
 
