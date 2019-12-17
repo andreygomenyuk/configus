@@ -1,4 +1,6 @@
 
+set -x
+
 # Disable auto capitalisation, smart dashes, period substitution, smart quotes,
 # auto correction
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
@@ -18,7 +20,14 @@ defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM  HH:mm:ss
 defaults write com.apple.menuextra.clock IsAnalog -bool false
 defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
 defaults write com.apple.menuextra.battery ShowPercent -bool true
-defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/vpn.menu"
+defaults write com.apple.systemuiserver menuExtras -array \
+    "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+    "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+    "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+    "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+    "/System/Library/CoreServices/Menu Extras/User.menu" \
+    "/System/Library/CoreServices/Menu Extras/Clock.menu"\
+    "/System/Library/CoreServices/Menu Extras/vpn.menu"
 defaults write com.apple.networkConnect VPNShowTime -bool True
 
 # Require password immediately after sleep or screen saver begins
@@ -69,6 +78,7 @@ defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 # Termial
 defaults write com.apple.Terminal.plist "Default Window Settings" "Pro"
 defaults write com.apple.Terminal.plist "Startup Window Settings" "Pro"
+defaults write com.apple.terminal StringEncodings -array 4
 /usr/libexec/PlistBuddy -c "Add :'Window Settings':Pro:rowCount integer 50" ~/Library/Preferences/com.apple.Terminal.plist
 /usr/libexec/PlistBuddy -c "Add :'Window Settings':Pro:columnCount integer 150" ~/Library/Preferences/com.apple.Terminal.plist
 
