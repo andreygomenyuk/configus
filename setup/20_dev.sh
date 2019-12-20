@@ -20,7 +20,6 @@ brew cask install dropbox
 brew cask install docker
 brew cask install telegram
 brew cask install phpstorm
-
-curl -s https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
+brew cask install vlc
+brew install composer
 
